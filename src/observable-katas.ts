@@ -174,7 +174,12 @@ export class RXJSKatas {
    */
 
   static createObservable123delay():Observable<number> {
-    return; // TODO: Replace this return value with the value specified in the comment above.
+    
+    // const nums = of(1,2,3)
+   
+   // const result = timer(50).pipe(nums => nums);
+     return timer(0,50).pipe(map(num => num + 1), take(3));
+       // TODO: Replace this return value with the value specified in the comment above.
   }
   
   /**
@@ -193,7 +198,7 @@ export class RXJSKatas {
    */
 
   static issueGetRequest(httpClient: HttpClient):Observable<object> {
-    return; // TODO: Replace this return value with the value specified in the comment above.
+    return httpClient.get(`https://www.quotes4u.com/cervantes`); // TODO: Replace this return value with the value specified in the comment above.
   }
 
   /**
@@ -203,7 +208,7 @@ export class RXJSKatas {
    */
 
   static issuePostRequest(httpClient: HttpClient):Observable<object> {
-    return; // TODO: Replace this return value with the value specified in the comment above.
+    return httpClient.post(`https://www.quotes4u.com/hugo`,{quote: 'Life is the flower for which love is the honey.'}); // TODO: Replace this return value with the value specified in the comment above.
   }
 
   /**
@@ -211,7 +216,8 @@ export class RXJSKatas {
    * human face.'}` to the URL `https://www.quotes4u.com/hugo/0` to update our previous quote.
    */
   static issuePatchRequest(httpClient: HttpClient):Observable<object> {
-    return; // TODO: Replace this return value with the value specified in the comment above.
+    return httpClient.patch(`https://www.quotes4u.com/hugo/0`,{quote: 'Laughter is the sun that drives winter from the human face.'}) 
+    // TODO: Replace this return value with the value specified in the comment above.
   }
   
   /**
@@ -219,7 +225,7 @@ export class RXJSKatas {
    * `https://www.quotes4u.com/hugo/0`
    */
   static issueDeleteRequest(httpClient: HttpClient):Observable<object> {
-    return; // TODO: Replace this return value with the value specified in the comment above.
+    return httpClient.delete(`https://www.quotes4u.com/hugo/0`); // TODO: Replace this return value with the value specified in the comment above.
   }
 
   /**
@@ -231,6 +237,7 @@ export class RXJSKatas {
    * your request through `catchError`!)
    */
   static issueGetRequestCatchError(httpClient: HttpClient, errorHandler: (err, caught) => Observable<object>):Observable<object> {
-    return; // TODO: Replace this return value with the value specified in the comment above. 
+    return httpClient.get('https://www.quotes4u.com/hugo').pipe(catchError(errorHandler)); 
+    // TODO: Replace this return value with the value specified in the comment above. 
   }
 }
